@@ -6,6 +6,7 @@ public class PensionPlanner {
 	private double annualSalary;
 	private double monthlySaving;
 	private double interestRate;
+	private double semiAnnualRaise = 0.03;
 
 	public PensionPlanner(double pensionTarget, double currentSaving, double annualSalary,
 			double monthlySaving, double interestRate) {
@@ -23,11 +24,29 @@ public class PensionPlanner {
 		int months = 0;
 		currentSaving = 0;
 		while (currentSaving < pensionTarget) {
+			months++;
+			System.out.println("Monthly Income :" + monthlyIncome);
+			System.out.println("Raise :" + monthlyIncome * semiAnnualRaise);
+			if (months > 0) {
+				if (months % 6 == 0) {
+					monthlyIncome += monthlyIncome * semiAnnualRaise;
+					monthlyContribution = monthlyIncome * monthlySaving;
+				}
+			}
 			currentSaving += currentSaving * monthlyInterestRate;
 			currentSaving += monthlyContribution;
-			months++;
+			System.out.println("Months :" + months);
+			System.out.println("Current Saving" + currentSaving);
 		}
 		return months;
+	}
+
+	public double getSemiAnnualRaise() {
+		return semiAnnualRaise;
+	}
+
+	public void setSemiAnnualRaise(double semiAnnualRaise) {
+		this.semiAnnualRaise = semiAnnualRaise;
 	}
 
 	public double getPensionTarget() {
