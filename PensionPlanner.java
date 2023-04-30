@@ -16,14 +16,6 @@ public class PensionPlanner {
 		this.interestRate = interestRate;
 	}
 
-	public void reset() {
-		this.pensionTarget = 240000;
-		this.currentSaving = 0;
-		this.annualSalary = 40000;
-		this.monthlySaving = 0.1;
-		this.interestRate = 0.04;
-	}
-
 	public int getWorkingMonth() {
 		double monthlyInterestRate = interestRate / 12;
 		double monthlyIncome = annualSalary / 12;
